@@ -3,134 +3,212 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neil M Lal | Software Developer</title>
+  <title>Neil M Lal | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-logo">&lt;Neil /&gt;</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Ambient Glow Backgrounds -->
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Floating Header / Navbar -->
+  <nav class="navbar-container">
+    <div class="navbar">
+      <a href="#" class="brand">&lt;Neil<span>/&gt;</span></a>
+      <ul class="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://github.com/Neil-M-Lal" target="_blank" class="nav-btn">GitHub ↗</a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-content">
-      <span class="badge">Available for roles & collaborations</span>
-      <h1>Hi, I'm <span class="highlight">Neil M Lal</span>.</h1>
-      <p class="subtitle">MCA Scholar & Full-Stack Developer specializing in software architecture, scalable web solutions, and applied machine learning models.</p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="https://github.com/Neil-M-Lal" target="_blank" class="btn btn-outline">GitHub Profile</a>
-      </div>
+  <header class="hero section">
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      Available for Opportunities & Collaborations
+    </div>
+    <h1 class="hero-title">
+      Crafting scalable software &amp; <br />
+      <span class="gradient-text">intelligent vision models.</span>
+    </h1>
+    <p class="hero-subtitle">
+      Hi, I'm <strong>Neil M Lal</strong>. Master of Computer Applications scholar at <strong>Mar Athanasius College of Engineering (MACE)</strong>, Kothamangalam. Focused on modern web engineering, clean system architecture, and deep learning solutions.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Explore Work</a>
+      <a href="#contact" class="btn btn-secondary">Get In Touch</a>
     </div>
   </header>
 
-  <!-- About Section -->
+  <!-- About / Academic Highlights -->
   <section id="about" class="section">
-    <h2 class="section-title">01. About Me</h2>
+    <div class="section-header">
+      <span class="tag">01. Overview</span>
+      <h2>Education &amp; Background</h2>
+    </div>
+    
     <div class="about-grid">
-      <div class="about-card">
-        <p>I am a computer applications postgraduate focused on building robust backends, performant interfaces, and data-driven systems. My background spans core computer science concepts, object-oriented design in C++, relational databases, and predictive neural network pipelines.</p>
-        <p>Currently researching and deploying hybrid neural networks for time-series forecasting alongside clean full-stack web applications.</p>
+      <div class="glass-card about-card">
+        <p>
+          I am a computer applications postgraduate passionate about turning conceptual logic into scalable, user-centric web applications and applied machine learning pipelines.
+        </p>
+        <p>
+          My foundation spans robust database design, object-oriented principles in C++, full-stack web architectures, and deep neural network training. I continuously focus on clean code, system performance, and solving practical real-world problems.
+        </p>
       </div>
-      <div class="education-card">
-        <h3>Academic Milestones</h3>
-        <ul class="timeline">
-          <li>
-            <strong>Master of Computer Applications (MCA)</strong>
-            <span>Mar Athanasius College of Engineering (MACE)</span>
-          </li>
-          <li>
-            <strong>Bachelor of Computer Applications (BCA)</strong>
-            <span>National College, University of Kerala • 84.77%</span>
-          </li>
-        </ul>
+
+      <div class="glass-card education-card">
+        <h3>Academic History</h3>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Master of Computer Applications (MCA)</h4>
+            <span class="inst">Mar Athanasius College of Engineering (MACE), Kothamangalam</span>
+            <span class="time-tag">Pursuing</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Bachelor of Computer Applications (BCA)</h4>
+            <span class="inst">National College, University of Kerala</span>
+            <span class="score-tag">Graduated with 84.77%</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
+  <!-- Skills & Technologies -->
   <section id="skills" class="section">
-    <h2 class="section-title">02. Tech Stack</h2>
+    <div class="section-header">
+      <span class="tag">02. Capabilities</span>
+      <h2>Tech Stack &amp; Tools</h2>
+    </div>
+
     <div class="skills-grid">
-      <div class="skill-category">
+      <div class="glass-card skill-box">
         <h3>Languages</h3>
-        <div class="tags">
-          <span>C</span><span>C++</span><span>PHP</span><span>Python</span><span>JavaScript</span><span>SQL</span>
+        <div class="chip-container">
+          <span class="chip">C</span>
+          <span class="chip">C++</span>
+          <span class="chip">Python</span>
+          <span class="chip">PHP</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">SQL</span>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Web & Database</h3>
-        <div class="tags">
-          <span>HTML5</span><span>CSS3</span><span>Bootstrap</span><span>MySQL</span><span>REST APIs</span>
+
+      <div class="glass-card skill-box">
+        <h3>Web &amp; Frameworks</h3>
+        <div class="chip-container">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3</span>
+          <span class="chip">Bootstrap</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Responsive UI</span>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>AI & Analytics</h3>
-        <div class="tags">
-          <span>TensorFlow</span><span>Keras</span><span>NumPy</span><span>1D-CNN</span><span>GRU Models</span>
+
+      <div class="glass-card skill-box">
+        <h3>AI &amp; Data Science</h3>
+        <div class="chip-container">
+          <span class="chip">TensorFlow</span>
+          <span class="chip">Keras</span>
+          <span class="chip">OpenCV</span>
+          <span class="chip">CNNs</span>
+          <span class="chip">NumPy</span>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Tools & DevOps</h3>
-        <div class="tags">
-          <span>Git</span><span>GitHub</span><span>VS Code</span><span>Linux / Bash</span>
+
+      <div class="glass-card skill-box">
+        <h3>Tools &amp; Databases</h3>
+        <div class="chip-container">
+          <span class="chip">MySQL</span>
+          <span class="chip">Git</span>
+          <span class="chip">GitHub</span>
+          <span class="chip">VS Code</span>
+          <span class="chip">Vercel</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Projects -->
   <section id="projects" class="section">
-    <h2 class="section-title">03. Featured Projects</h2>
+    <div class="section-header">
+      <span class="tag">03. Portfolio</span>
+      <h2>Featured Projects</h2>
+    </div>
+
     <div class="projects-grid">
-      
-      <article class="project-card">
-        <div class="project-header">
-          <span class="folder-icon">📁</span>
-          <a href="https://github.com/Neil-M-Lal/Pet-Paradise" target="_blank" class="project-link">GitHub ↗</a>
+      <!-- Major Project -->
+      <article class="glass-card project-card featured">
+        <div class="project-top">
+          <span class="project-pill major-pill">Major Project</span>
+          <span class="project-year">AI / Computer Vision</span>
+        </div>
+        <h3 class="project-title">Plant Disease Detection System</h3>
+        <p class="project-summary">
+          An automated agricultural diagnostics system utilizing Convolutional Neural Networks (CNN) to detect foliar pathologies from leaf image datasets. Engineered to empower crop monitoring through high-confidence prediction and image preprocessing.
+        </p>
+        <div class="project-techs">
+          <span>Python</span>
+          <span>TensorFlow</span>
+          <span>CNN</span>
+          <span>OpenCV</span>
+          <span>Deep Learning</span>
+        </div>
+      </article>
+
+      <!-- Minor Project -->
+      <article class="glass-card project-card">
+        <div class="project-top">
+          <span class="project-pill minor-pill">Minor Project</span>
+          <a href="https://github.com/Neil-M-Lal/Pet-Paradise" target="_blank" class="project-icon-link">GitHub ↗</a>
         </div>
         <h3 class="project-title">Pet Paradise</h3>
-        <p class="project-desc">A full-stack web application designed for comprehensive pet adoption, veterinary scheduling, and pet care management, featuring dedicated administrative workflows and relational database integrity.</p>
-        <div class="project-tags">
-          <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span>
+        <p class="project-summary">
+          A full-stack web application designed for comprehensive pet adoption, veterinary scheduling, and shelter management. Features role-based user authentication, adoption matching algorithms, and a centralized relational administration panel.
+        </p>
+        <div class="project-techs">
+          <span>PHP</span>
+          <span>MySQL</span>
+          <span>JavaScript</span>
+          <span>Bootstrap</span>
+          <span>HTML5/CSS3</span>
         </div>
       </article>
-
-      <article class="project-card">
-        <div class="project-header">
-          <span class="folder-icon">⚡</span>
-          <span class="status-badge">Research</span>
-        </div>
-        <h3 class="project-title">GridSync</h3>
-        <p class="project-desc">An ultra-short-term forecasting engine leveraging a hybrid 1D-CNN-GRU architecture to predict solar power generation and load demand across smart electrical grids.</p>
-        <div class="project-tags">
-          <span>Python</span><span>TensorFlow</span><span>GRU</span><span>Time-Series</span>
-        </div>
-      </article>
-
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="section contact-section">
-    <h2 class="section-title">04. Get In Touch</h2>
-    <p>Whether you want to collaborate on engineering initiatives, discuss technical systems, or explore development opportunities, feel free to reach out.</p>
-    <a href="mailto:neilmlal@example.com" class="btn btn-primary">Say Hello</a>
+    <div class="glass-card contact-card">
+      <span class="tag">04. Connect</span>
+      <h2>Let's build something remarkable.</h2>
+      <p>
+        Open to developer roles, open source collaboration, and engineering conversations. Feel free to connect.
+      </p>
+      <div class="contact-actions">
+        <a href="https://github.com/Neil-M-Lal" target="_blank" class="btn btn-primary">GitHub Profile</a>
+        <a href="https://linkedin.com" target="_blank" class="btn btn-secondary">LinkedIn</a>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>Engineered by Neil M Lal • Hosted on Vercel</p>
+    <p>© Neil M Lal • MCA Scholar • Hosted on Vercel</p>
   </footer>
 
   <script src="script.js"></script>
