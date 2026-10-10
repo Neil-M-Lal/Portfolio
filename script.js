@@ -1,26 +1,39 @@
-// Fade in cards smoothly as they scroll into view
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active-in');
-      }
-    });
-  },
-  { threshold: 0.08 }
-);
+// Progressive scroll animations: dynamic connecting lines and card reveals
+function updateTimelineScroll() {
+  const windowHeight = window.innerHeight;
+  const triggerPoint = windowHeight * 0.78; // activates when elements reach ~78% down the viewport
 
-document.querySelectorAll('.glass-card, .section-header, .hero-title').forEach((el) => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
-  el.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-  observer.observe(el);
-});
-
-// Class trigger on intersection
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.active-in').forEach((el) => {
-    el.style.opacity = '1';
-    el.style.transform = 'translateY(0)';
+  // 1. Reveal timeline nodes and cards smoothly
+  document.querySelectorAll('.timeline-node, .stack-item-card').forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < triggerPoint) {
+      el.classList.add('in-view');
+    }
   });
-});
+
+  // 2. Animate the vertical line downward as you scroll
+  document.querySelectorAll('.timeline-vertical').forEach((timeline) => {
+    const line = timeline.querySelector('.timeline-line');
+    if (!line) return;
+
+    const timelineRect = timeline.getBoundingClientRect();
+    const timelineTop = timelineRect.top;
+    const timelineHeight = timelineRect.height;
+
+    if (timelineTop < triggerPoint) {
+      const scrollDistance = triggerPoint - timelineTop;
+      const progressPercent = Math.min(
+        100,
+        Math.max(0, (scrollDistance / (timelineHeight - 40)) * 100)
+      );
+      line.style.height = `${progressPercent}%`;
+    } else {
+      line.style.height = '0%';
+    }
+  });
+}
+
+// Event listeners
+window.addEventListener('scroll', updateTimelineScroll, { passive: true });
+window.addEventListener('resize', updateTimelineScroll);
+window.addEventListener('DOMContentLoaded', updateTimelineScroll);

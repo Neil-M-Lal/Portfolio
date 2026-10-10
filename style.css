@@ -49,6 +49,7 @@ html {
 }
 
 /* Vertical Timeline Structure */
+/* Vertical Timeline Structure */
 .timeline-vertical {
   position: relative;
   max-width: 650px;
@@ -56,17 +57,31 @@ html {
   padding-left: 2rem;
 }
 
-.timeline-line {
+/* Background track (dim guide) */
+.timeline-vertical::before {
+  content: '';
   position: absolute;
-  top: 15px;
+  top: 25px;
   bottom: 25px;
   left: 27px;
   width: 2px;
-  background: #6366f1;
-  opacity: 0.8;
-  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+  background: rgba(255, 255, 255, 0.06);
 }
 
+/* Dynamic connecting line that grows on scroll */
+.timeline-line {
+  position: absolute;
+  top: 25px;
+  left: 27px;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(180deg, #6366f1, #38bdf8);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.7);
+  transition: height 0.15s ease-out;
+  z-index: 1;
+}
+
+/* Individual node layout */
 .timeline-node {
   position: relative;
   margin-bottom: 1.8rem;
@@ -74,6 +89,7 @@ html {
   align-items: flex-start;
 }
 
+/* Bullet indicator: hidden initially */
 .node-bullet {
   position: absolute;
   left: -2rem;
@@ -82,12 +98,23 @@ html {
   height: 14px;
   border-radius: 50%;
   background: #090d16;
-  border: 3px solid #818cf8;
-  box-shadow: 0 0 10px #6366f1;
+  border: 3px solid #475569;
+  box-shadow: none;
   z-index: 2;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Dark Card Styling */
+/* Bullet when scrolled into view */
+.timeline-node.in-view .node-bullet {
+  opacity: 1;
+  transform: scale(1);
+  border-color: #818cf8;
+  box-shadow: 0 0 12px #6366f1, 0 0 24px rgba(99, 102, 241, 0.5);
+}
+
+/* Timeline card: hidden and translated initially */
 .timeline-box {
   background: #0f121d;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -95,7 +122,17 @@ html {
   padding: 1.6rem 1.8rem;
   width: 100%;
   position: relative;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+}
+
+/* Timeline card when scrolled into view */
+.timeline-node.in-view .timeline-box {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .timeline-box:hover {
@@ -199,7 +236,16 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+}
+
+.stack-item-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .stack-item-card:hover {
@@ -235,7 +281,6 @@ html {
   font-size: 0.88rem;
   max-width: 400px;
 }
-
 
 
 
