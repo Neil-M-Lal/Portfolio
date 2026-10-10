@@ -20,6 +20,225 @@ html {
   scroll-behavior: smooth;
 }
 
+
+
+
+/* Custom Centered Headings with Purple Underline */
+.custom-heading-wrapper {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.heading-line {
+  width: 50px;
+  height: 4px;
+  background: #6366f1;
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+
+/* Vertical Timeline Structure */
+.timeline-vertical {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+  padding-left: 2rem;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 15px;
+  bottom: 25px;
+  left: 27px;
+  width: 2px;
+  background: #6366f1;
+  opacity: 0.8;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+.timeline-node {
+  position: relative;
+  margin-bottom: 1.8rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.node-bullet {
+  position: absolute;
+  left: -2rem;
+  top: 22px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #090d16;
+  border: 3px solid #818cf8;
+  box-shadow: 0 0 10px #6366f1;
+  z-index: 2;
+}
+
+/* Dark Card Styling */
+.timeline-box {
+  background: #0f121d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 1.6rem 1.8rem;
+  width: 100%;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.timeline-box:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  transform: translateX(4px);
+}
+
+.box-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.box-top-row h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.sub-deg {
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.college-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #818cf8;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Status Chips */
+.status-chip {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+}
+
+.chip-blue {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.chip-green {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Step Boxes with Number Watermarks */
+.step-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.step-num {
+  position: absolute;
+  right: 1.2rem;
+  top: 0.6rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: var(--font-mono, monospace);
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+.step-box h3 {
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.step-box p {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* What I Love Building Cards */
+.stack-list-vertical {
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.stack-item-card {
+  background: #0f121d;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.stack-item-card:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  transform: translateY(-3px);
+}
+
+.icon-circle {
+  width: 46px;
+  height: 46px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #818cf8;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stack-item-card h3 {
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.stack-item-card p {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  max-width: 400px;
+}
+
+
+
+
 body {
   background-color: var(--bg);
   color: var(--text-primary);
