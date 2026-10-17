@@ -53,12 +53,24 @@ window.addEventListener('resize', updateTimelineScroll);
 window.addEventListener('DOMContentLoaded', updateTimelineScroll);
 
 // ==========================================
-// INTERACTIVE 3D CHARACTER & SCROLL ENGINE
+// SELF-LOADING INTERACTIVE 3D CHARACTER
 // ==========================================
-(function init3DAvatar() {
+(function setupAvatarLoader() {
+  if (typeof THREE !== 'undefined') {
+    start3DAvatar();
+  } else {
+    // Automatically inject Three.js if missing in index.html
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    script.onload = start3DAvatar;
+    document.head.appendChild(script);
+  }
+})();
+
+function start3DAvatar() {
   const stage = document.getElementById('avatar-stage');
   const bubble = document.getElementById('avatar-speech');
-  if (!stage || typeof THREE === 'undefined') return;
+  if (!stage) return;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -70,7 +82,7 @@ window.addEventListener('DOMContentLoaded', updateTimelineScroll);
   stage.appendChild(renderer.domElement);
 
   // Studio Pixar-style Lighting
-  scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+  scene.add(new THREE.AmbientLight(0xffffff, 0.75));
   const keyLight = new THREE.DirectionalLight(0xfff5e6, 1.4);
   keyLight.position.set(3, 4, 4);
   scene.add(keyLight);
@@ -81,7 +93,7 @@ window.addEventListener('DOMContentLoaded', updateTimelineScroll);
 
   // Character Root Group
   const charGroup = new THREE.Group();
-  charGroup.position.set(1.3, -0.2, 0);
+  charGroup.position.set(1.25, -0.2, 0);
   scene.add(charGroup);
 
   const headGroup = new THREE.Group();
@@ -118,7 +130,7 @@ window.addEventListener('DOMContentLoaded', updateTimelineScroll);
     headGroup.add(puff);
   });
 
-  // Eyes & Pupils (Grouped for blinking & tracking)
+  // Eyes & Pupils
   const eyeGroup = new THREE.Group();
   const eyeGeo = new THREE.SphereGeometry(0.16, 20, 20);
   const leftEye = new THREE.Mesh(eyeGeo, eyeWhiteMat);
@@ -175,103 +187,100 @@ window.addEventListener('DOMContentLoaded', updateTimelineScroll);
   torso.position.set(0, -1.8, 0);
   charGroup.add(torso);
 
-  // Orbiting Tech Nodes (AI / Neural Network vibe)
+  // Orbiting 3D Tech Nodes
   const orbGroup = new THREE.Group();
   charGroup.add(orbGroup);
   const orbColors = [0x38bdf8, 0x818cf8, 0xf43f5e];
   orbColors.forEach((col, idx) => {
     const orb = new THREE.Mesh(
       new THREE.OctahedronGeometry(0.12, 0),
-      new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.5, wireframe: true })
+      new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.6, wireframe: true })
     );
     const angle = (idx / orbColors.length) * Math.PI * 2;
     orb.position.set(Math.cos(angle) * 1.6, 0.2 + idx * 0.3, Math.sin(angle) * 1.6);
     orbGroup.add(orb);
   });
 
-  // --- INTERACTIVITY: MOUSE, SCROLL & CLICK ---
+  // --- INTERACTIVITY ---
   let mouseX = 0, mouseY = 0;
-  let targetPos = { x: 1.3, y: -0.2, z: 0 };
+  let targetPos = { x: 1.25, y: -0.2, z: 0 };
   let targetRotY = -0.3;
   let spinBoost = 0;
+  let jumpBoost = 0;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = (e.clientX / window.innerWidth) * 2 - 1;
     mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
   });
 
-  // React to Page Scroll!
   const quotes = [
     "👋 Hi! I'm Neil's 3D Twin. Click me!",
-    "🎓 MCA @ MACE | State Rank 373!",
-    "🧠 Building Deep Learning & CNN models!",
+    "🎓 MCA @ MACE Kothamangalam | Rank 373!",
+    "🧠 Trained on CNNs, IoT & Deep Learning!",
+    "💻 BCA Grad with 84.77% from National College!",
     "🚀 Let's build something awesome together!"
   ];
 
-  window.addEventListener('scroll', () => {
-    const scrollMax = document.body.scrollHeight - window.innerHeight || 1;
-    const progress = window.scrollY / scrollMax;
-
-    if (progress < 0.25) {
-      // Hero Section: Right side, normal view
-      targetPos = { x: 1.3, y: -0.2, z: 0 };
-      targetRotY = -0.3;
-      if (bubble) bubble.innerText = quotes[0];
-    } else if (progress < 0.55) {
-      // About Section: Zoom in closer to face & stickers!
-      targetPos = { x: 1.1, y: -0.05, z: 1.4 };
-      targetRotY = -0.45;
-      if (bubble) bubble.innerText = quotes[1];
-    } else if (progress < 0.8) {
-      // Skills Section: Glide across to left side
-      targetPos = { x: -1.3, y: -0.2, z: 0.4 };
-      targetRotY = 0.4;
-      if (bubble) bubble.innerText = quotes[2];
-    } else {
-      // Projects / Contact: Center-right dramatic angle
-      targetPos = { x: 1.2, y: -0.15, z: 0.8 };
-      targetRotY = -0.25;
-      if (bubble) bubble.innerText = quotes[3];
-    }
-  });
-
-  // Click on 3D canvas triggers spin + quote change
   let clickCount = 0;
-  renderer.domElement.addEventListener('click', () => {
-    spinBoost = Math.PI * 2; // 360 spin!
+  function triggerAvatarReaction() {
+    spinBoost = Math.PI * 2; // 360 degree spin
+    jumpBoost = 0.45;        // Happy jump
     clickCount = (clickCount + 1) % quotes.length;
     if (bubble) {
       bubble.innerText = quotes[clickCount];
       bubble.classList.add('pop');
-      setTimeout(() => bubble.classList.remove('pop'), 400);
+      setTimeout(() => bubble.classList.remove('pop'), 350);
+    }
+  }
+
+  // Trigger when clicking the speech bubble OR the 3D canvas!
+  if (bubble) bubble.addEventListener('click', triggerAvatarReaction);
+  renderer.domElement.addEventListener('click', triggerAvatarReaction);
+
+  // React to Page Scroll
+  window.addEventListener('scroll', () => {
+    const scrollMax = document.documentElement.scrollHeight - window.innerHeight || 1;
+    const progress = window.scrollY / scrollMax;
+
+    if (progress < 0.25) {
+      targetPos = { x: 1.25, y: -0.2, z: 0 };
+      targetRotY = -0.3;
+    } else if (progress < 0.55) {
+      // Zoom in closer to face & stickers on About section
+      targetPos = { x: 1.0, y: -0.05, z: 1.5 };
+      targetRotY = -0.45;
+    } else if (progress < 0.8) {
+      // Glide to left side on Skills section
+      targetPos = { x: -1.25, y: -0.2, z: 0.4 };
+      targetRotY = 0.4;
+    } else {
+      targetPos = { x: 1.15, y: -0.15, z: 0.8 };
+      targetRotY = -0.25;
     }
   });
 
-  // Automatic Eye Blinking every 3.5 seconds
+  // Blinking eyes
   setInterval(() => {
     eyeGroup.scale.y = 0.05;
     setTimeout(() => { eyeGroup.scale.y = 1; }, 140);
   }, 3500);
 
-  // --- ANIMATION LOOP ---
+  // Animation Loop
   const clock = new THREE.Clock();
   function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
-    // Smooth position & floating effect
-    charGroup.position.x += (targetPos.x - charGroup.position.x) * 0.05;
-    charGroup.position.y += (targetPos.y + Math.sin(t * 2.2) * 0.05 - charGroup.position.y) * 0.05;
-    charGroup.position.z += (targetPos.z - charGroup.position.z) * 0.05;
-
-    // Spin decay on click
+    jumpBoost *= 0.88;
     spinBoost *= 0.88;
 
-    // Head & Eye cursor tracking
-    headGroup.rotation.y += (targetRotY + mouseX * 0.4 + spinBoost - headGroup.rotation.y) * 0.08;
+    charGroup.position.x += (targetPos.x - charGroup.position.x) * 0.05;
+    charGroup.position.y += (targetPos.y + jumpBoost + Math.sin(t * 2.2) * 0.05 - charGroup.position.y) * 0.08;
+    charGroup.position.z += (targetPos.z - charGroup.position.z) * 0.05;
+
+    headGroup.rotation.y += (targetRotY + mouseX * 0.45 + spinBoost - headGroup.rotation.y) * 0.08;
     headGroup.rotation.x += (-mouseY * 0.25 - headGroup.rotation.x) * 0.08;
 
-    // Orbit the 3D AI nodes
     orbGroup.rotation.y = t * 0.6;
     orbGroup.rotation.z = Math.sin(t * 0.5) * 0.15;
 
@@ -284,4 +293,4 @@ window.addEventListener('DOMContentLoaded', updateTimelineScroll);
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
-})();
+}
