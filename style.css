@@ -824,3 +824,18 @@ footer {
   line-height: 1.6;
   margin-bottom: 1.25rem;
 }
+/* Target secondary buttons like "Get In Touch" */
+a.btn-secondary, button.btn-secondary, .outline-btn, a[href="#contact"] {
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Make it glow electric yellow or hot pink on hover */
+a.btn-secondary:hover, button.btn-secondary:hover, .outline-btn:hover, a[href="#contact"]:hover {
+  border-color: var(--accent-yellow);
+  color: var(--accent-yellow);
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.25);
+  transform: translateY(-2px);
+}
