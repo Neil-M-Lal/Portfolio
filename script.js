@@ -87,9 +87,9 @@ function start3DAvatar() {
   keyLight.position.set(3, 4, 4);
   scene.add(keyLight);
 
-  const rimLight = new THREE.DirectionalLight(0x38bdf8, 2.2);
-  rimLight.position.set(-4, 2, -3);
-  scene.add(rimLight);
+ const rimLight = new THREE.DirectionalLight(0xff007f, 2.4); // Hot Pink rim glow
+rimLight.position.set(-4, 2, -3);
+scene.add(rimLight);
 
   // Character Root Group
   const charGroup = new THREE.Group();
@@ -190,7 +190,7 @@ function start3DAvatar() {
   // Orbiting 3D Tech Nodes
   const orbGroup = new THREE.Group();
   charGroup.add(orbGroup);
-  const orbColors = [0x38bdf8, 0x818cf8, 0xf43f5e];
+  const orbColors = [0xff007f, 0xfacc15, 0xff007f]; // Hot Pink & Electric Yellow
   orbColors.forEach((col, idx) => {
     const orb = new THREE.Mesh(
       new THREE.OctahedronGeometry(0.12, 0),

@@ -1,13 +1,18 @@
 :root {
-  --bg: #090d16;
-  --card-bg: rgba(17, 24, 39, 0.7);
+  --bg-pitch: #030305;         /* Deep Pitch Black */
+  --card-bg: rgba(12, 12, 16, 0.85); /* Glassmorphism card dark tint */
   --card-border: rgba(255, 255, 255, 0.08);
-  --accent-cyan: #38bdf8;
-  --accent-purple: #818cf8;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  
+  --accent-pink: #ff007f;      /* Hot Pink */
+  --accent-yellow: #facc15;    /* Electric Yellow */
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+body {
+  background-color: var(--bg-pitch) !important;
+  color: var(--text-main);
 }
 
 * {
@@ -284,14 +289,7 @@ html {
 
 
 
-body {
-  background-color: var(--bg);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  position: relative;
-  overflow-x: hidden;
-}
+
 
 /* Background Glowing Blurs */
 .glow-orb {
@@ -744,15 +742,15 @@ footer {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: rgba(17, 24, 39, 0.9);
+  background: rgba(10, 10, 14, 0.92);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(56, 189, 248, 0.5);
+  border: 1px solid var(--accent-pink); /* Hot Pink border */
   color: #f8fafc;
   padding: 0.8rem 1.4rem;
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 600;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 0, 127, 0.3); /* Pink neon glow */
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: auto !important;
   cursor: pointer;
@@ -762,27 +760,12 @@ footer {
 
 .avatar-bubble:hover {
   transform: translateY(-4px) scale(1.03);
-  border-color: #38bdf8;
+  border-color: var(--accent-yellow); /* Glows Electric Yellow on hover */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 22px rgba(250, 204, 21, 0.4);
 }
 
 .avatar-bubble.pop {
   transform: translateY(-10px) scale(1.08);
-  border-color: #f43f5e;
-  box-shadow: 0 10px 30px rgba(244, 63, 94, 0.4);
-}
-
-header, nav, section, .section, footer {
-  position: relative;
-  z-index: 2;
-}
-
-@media (max-width: 768px) {
-  #avatar-stage {
-    opacity: 0.35;
-  }
-  .avatar-bubble {
-    bottom: 15px;
-    right: 15px;
-    font-size: 0.8rem;
-  }
+  border-color: var(--accent-yellow);
+  box-shadow: 0 10px 30px rgba(250, 204, 21, 0.5);
 }
