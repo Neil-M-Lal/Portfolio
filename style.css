@@ -858,15 +858,16 @@ a.btn-primary:hover, button.btn-primary:hover, .primary-btn:hover, a[href="#proj
   transform: translateY(-2px);
 }
 
-/* Reset active and hover states for navigation buttons back to original */
+/* Force all navigation buttons to stay normal glass style always */
+nav button, nav a, .nav-link, 
 nav button.active, nav a.active, .nav-link.active {
-  background: rgba(255, 255, 255, 0.12) !important;
-  color: #fff !important;
-  border: none;
-  box-shadow: none;
+  background: transparent !important;
+  color: var(--text-main) !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
+/* Subtle hover effect only */
 nav button:hover, nav a:hover, .nav-link:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  color: var(--accent-yellow) !important;
 }
