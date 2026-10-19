@@ -834,9 +834,10 @@ a.btn-secondary, button.btn-secondary, .outline-btn, a[href="#contact"] {
 
 /* Make it glow electric yellow or hot pink on hover */
 a.btn-secondary:hover, button.btn-secondary:hover, .outline-btn:hover, a[href="#contact"]:hover {
-  border-color: var(--accent-pink);
+  background: transparent;
+  border-color: var(--accent-pink); /* Shifts to Electric Yellow on hover */
   color: var(--accent-pink);
-  box-shadow: 0 0 20px rgba(250, 204, 21, 0.25);
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.35); /* Electric yellow glow */
   transform: translateY(-2px);
 }
 
