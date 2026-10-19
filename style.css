@@ -826,9 +826,9 @@ footer {
 }
 /* Target secondary buttons like "Get In Touch" */
 a.btn-secondary, button.btn-secondary, .outline-btn, a[href="#contact"] {
+  background: var(--accent-yellow); /* Hot Pink background */
+  color: #fff;
   border: 1px solid var(--accent-yellow);
-  color: var(--accent-yellow);
-  background: transparent;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
