@@ -974,3 +974,90 @@ section#skills .glass-card,
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(250, 204, 21, 0.25) !important;
 }
 
+/* --- RESTRUCTURED LOADING SCREEN STYLING --- */
+#loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-pitch, #030305);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+#loader-screen.slide-up {
+  transform: translateY(-100vh);
+}
+
+.loader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem; /* Spacing between counter, name, and bar */
+}
+
+/* Counting numbers on top: larger and distinct font */
+/* Counting numbers on top: larger, Arial font, no percent symbol */
+.loader-counter {
+  font-family: Arial, sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent-yellow, #facc15);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Name in the middle: smaller size */
+.loader-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-secondary, #a1a1aa);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Progress bar at the bottom */
+.loader-bar-track {
+  width: 180px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+#loader-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--accent-pink, #ff007f);
+  transition: width 0.1s linear;
+}
+
+body {
+  overflow: hidden;
+}
+
+body.loaded {
+  overflow: auto;
+}
+
+/* --- ABSOLUTE CLEANUP FOR PROJECT CARD TAGS --- */
+.project-card *:before,
+.project-card *:after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+}
+
+.project-card .project-techs,
+.project-card .project-techs span,
+.project-card .project-pill {
+  border-left: none !important;
+}
+

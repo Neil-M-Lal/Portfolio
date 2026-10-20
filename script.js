@@ -294,3 +294,34 @@ scene.add(rimLight);
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const percentEl = document.getElementById("loading-percent");
+  const barFill = document.getElementById("loader-bar-fill");
+  const loaderScreen = document.getElementById("loader-screen");
+  
+  let currentPercent = 0;
+  
+  // Simulate smooth loading speed from 1 to 100
+  const loadInterval = setInterval(() => {
+    currentPercent += Math.floor(Math.random() * 8) + 3; // Random increment step
+    
+    if (currentPercent >= 100) {
+      currentPercent = 100;
+      clearInterval(loadInterval);
+      
+      // Update UI to 100%
+      percentEl.textContent = currentPercent;
+      barFill.style.width = "100%";
+      
+      // Wait a split second at 100%, then slide loader away and unlock page
+      setTimeout(() => {
+        loaderScreen.classList.add("slide-up");
+        document.body.classList.add("loaded");
+      }, 300);
+    }
+    
+    percentEl.textContent = currentPercent;
+    barFill.style.width = currentPercent + "%";
+  }, 40); // Speed of loading counter
+});
