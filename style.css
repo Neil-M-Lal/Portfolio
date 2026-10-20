@@ -1,13 +1,12 @@
 :root {
-  --bg-pitch: #030305;         /* Deep Pitch Black */
-  --card-bg: rgba(12, 12, 16, 0.85); /* Glassmorphism card dark tint */
+  --bg-pitch: #030305;
+  --card-bg: rgba(12, 12, 16, 0.85);
   --card-border: rgba(255, 255, 255, 0.08);
   
+  /* Your Neon Palette */
   --accent-pink: #ff007f;      /* Hot Pink */
   --accent-yellow: #facc15;    /* Electric Yellow */
-  
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --accent-cyan: #38bdf8;      /* Keeping a vibrant neon blue/cyan for tech accents */
 }
 
 body {
@@ -534,8 +533,29 @@ html {
   margin-bottom: 1rem;
 }
 
+/* --- EDUCATION & BACKGROUND CARDS --- */
+.education-card, .about-card {
+  position: relative;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--accent-pink); /* Hot Pink accent border */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.education-card:hover, .about-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-yellow); /* Glows Electric Yellow on hover */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(250, 204, 21, 0.15);
+}
+
 .education-card h3 {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
   margin-bottom: 1.5rem;
 }
 
@@ -620,9 +640,24 @@ html {
 }
 
 .project-card {
+  position: relative;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--accent-pink); /* Hot Pink accent border */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-yellow); /* Glows electric yellow on hover */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(250, 204, 21, 0.15);
 }
 
 .project-top {
@@ -677,6 +712,15 @@ html {
 }
 
 .project-techs {
+  position: relative;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--accent-pink); /* Hot Pink accent border */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -871,3 +915,62 @@ nav button.active, nav a.active, .nav-link.active {
 nav button:hover, nav a:hover, .nav-link:hover {
   color: var(--accent-yellow) !important;
 }
+
+/* Universal fix for all Tech Stack / Capability cards */
+#capabilities .glass-card, 
+.skills-container .glass-card, 
+section#skills .glass-card,
+.capabilities-grid div,
+.skills-grid div {
+  position: relative;
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--card-border) !important;
+  border-left: 4px solid var(--accent-yellow) !important; /* Hot Pink accent border */
+  padding: 2rem !important;
+  border-radius: 20px !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+  transition: transform 0.3s ease, border-color 0.3s ease !important;
+}
+
+
+
+/* Harmonize timeline and section accent lines with hot pink */
+.timeline-dot, .timeline-line, .section-indicator {
+  border-color: var(--accent-pink) !important;
+  background-color: var(--accent-pink) !important;
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+}
+
+/* Ensure all card left-borders use your vibrant hot pink */
+.glass-card, .project-card, .research-card, .education-card, .about-card {
+  border-left: 4px solid var(--accent-pink) !important;
+}
+
+/* Make card hover states glow electric yellow */
+.glass-card:hover, .project-card:hover, .research-card:hover, .education-card:hover, .about-card:hover {
+  border-color: var(--accent-yellow) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(250, 204, 21, 0.2) !important;
+}
+
+/* --- OVERRIDE BLUE TIMELINE & ACCENTS TO MATCH HOT PINK / YELLOW --- */
+.timeline-line, 
+.timeline-item::before, 
+.timeline-progress, 
+.timeline-dot {
+  background: var(--accent-pink) !important;
+  border-color: var(--accent-pink) !important;
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.5) !important;
+}
+
+/* Force all card left borders to Hot Pink */
+.glass-card, .project-card, .research-card, .education-card, .about-card, .timeline-item div {
+  border-left: 4px solid var(--accent-pink) !important;
+}
+
+/* Hover glow to Electric Yellow */
+.glass-card:hover, .project-card:hover, .research-card:hover, .education-card:hover, .about-card:hover {
+  border-color: var(--accent-yellow) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(250, 204, 21, 0.25) !important;
+}
+
