@@ -325,3 +325,35 @@ document.addEventListener("DOMContentLoaded", () => {
     barFill.style.width = currentPercent + "%";
   }, 40); // Speed of loading counter
 });
+// --- WAVY LOADER COUNTER ---
+(function initWavyLoader() {
+  function startCounting() {
+    const percentEl = document.getElementById("loading-percent");
+    const echoLoader = document.getElementById("echo-loader");
+    if (!percentEl || !echoLoader) return;
+
+    let count = 0;
+    const interval = setInterval(() => {
+      count += Math.floor(Math.random() * 5) + 3;
+
+      if (count >= 100) {
+        count = 100;
+        clearInterval(interval);
+        percentEl.textContent = count;
+
+        setTimeout(() => {
+          echoLoader.classList.add("loader-exit");
+          document.body.classList.add("loaded");
+        }, 350);
+      } else {
+        percentEl.textContent = count;
+      }
+    }, 30);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startCounting);
+  } else {
+    startCounting();
+  }
+})();

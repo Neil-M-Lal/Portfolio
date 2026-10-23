@@ -3,28 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neil M Lal | Portfolio</title>
+  <title>Neil M Lal | Creative Developer &amp; Researcher</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<!-- Custom Portfolio Loading Screen -->
-<div id="loader-screen">
-  <div class="loader-content">
-    <div class="loader-counter"><span id="loading-percent">0</span></div>
-    <h2 class="loader-name">Neil M Lal</h2>
-    <div class="loader-bar-track">
-      <div id="loader-bar-fill"></div>
+<body>
+
+  <!-- 1. WAVY CIRCLE LOADER -->
+  <div id="echo-loader">
+    <div class="echo-loader-wrap">
+      <svg class="wavy-svg" viewBox="0 0 300 300">
+        <!-- Outer Rippling Wave -->
+        <path class="wave-ring wave-1" d="M150,30 C190,25 220,50 245,80 C270,110 275,150 260,190 C245,230 210,265 170,270 C130,275 85,255 55,220 C25,185 25,135 45,95 C65,55 110,35 150,30 Z" />
+        <!-- Inner Rippling Wave -->
+        <path class="wave-ring wave-2" d="M150,40 C185,45 225,60 240,95 C255,130 265,175 245,210 C225,245 185,255 145,260 C105,265 65,245 45,205 C25,165 35,115 60,80 C85,45 115,35 150,40 Z" />
+      </svg>
+      <div class="echo-loader-text">
+        <div class="echo-count" id="loading-percent">0</div>
+        <div class="echo-brand">NEIL M LAL</div>
+      </div>
     </div>
   </div>
-</div>
-<body>
-<!-- Interactive 3D Character Background Stage -->
+
+  <!-- Interactive 3D Character Background Stage -->
   <div id="avatar-stage">
     <div id="avatar-speech" class="avatar-bubble">👋 Hi! I'm Neil. Click me!</div>
   </div>
+
   <!-- Ambient Glow Backgrounds -->
   <div class="glow-orb orb-1"></div>
   <div class="glow-orb orb-2"></div>
@@ -37,24 +45,54 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="https://github.com/Neil-M-Lal" target="_blank" class="nav-btn">GitHub ↗</a>
+      <a href="https://github.com/Neil-M-Lal" target="_blank" rel="noopener noreferrer" class="nav-btn">GitHub ↗</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- 2. GIANT EDITORIAL HERO SECTION -->
+  <section class="editorial-hero">
+    <div class="editorial-bg-text">
+      <span>EXPLORE MY</span>
+      <span class="outline-glow">PORTFOLIO</span>
+    </div>
+
+    <div class="editorial-Overlay-grid">
+      <!-- Left Metadata -->
+      <div class="hero-meta-left">
+        <p class="meta-label">// DEVELOPER &amp; RESEARCHER</p>
+        <p class="meta-sub">MCA @ MACE KOTHAMANGALAM</p>
+      </div>
+
+      <!-- Center Visual / Glow Orb -->
+      <div class="hero-center-visual">
+        <div class="hero-glow-orb"></div>
+      </div>
+
+      <!-- Right Metadata -->
+      <div class="hero-meta-right">
+        <p class="meta-desc">
+          I CRAFT HIGH-PERFORMANCE FULL-STACK ARCHITECTURES, DEEP LEARNING MODELS, AND INTERACTIVE EXPERIENCES.
+        </p>
+        <div class="scroll-prompt">SCROLL TO EXPLORE ↓</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Hero Section -->
   <header class="hero section">
     <div class="hero-badge">
       <span class="pulse-dot"></span>
-      Available for Opportunities & Collaborations
+      Available for Opportunities &amp; Collaborations
     </div>
     <h1 class="hero-title">
       Crafting scalable software &amp; <br />
       <span class="gradient-text">intelligent vision models.</span>
     </h1>
     <p class="hero-subtitle">
-      Hi, I'm <strong>Neil M Lal</strong>. Currently persuing Master of Computer Applications  at <strong>Mar Athanasius College of Engineering (MACE)</strong>, Kothamangalam. Focused on modern web engineering, clean system architecture, and deep learning solutions.
+      Hi, I'm <strong>Neil M Lal</strong>. Currently pursuing a Master of Computer Applications at <strong>Mar Athanasius College of Engineering (MACE)</strong>, Kothamangalam. Focused on modern web engineering, clean system architecture, and deep learning solutions.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">Explore Work</a>
@@ -62,13 +100,13 @@
     </div>
   </header>
 
-  <!-- About / Academic Highlights -->
+  <!-- 01. About & Academic Overview -->
   <section id="about" class="section">
     <div class="section-header">
       <span class="tag">01. Overview</span>
       <h2>Education &amp; Background</h2>
     </div>
-    
+
     <div class="about-grid">
       <div class="glass-card about-card">
         <p>
@@ -81,7 +119,7 @@
 
       <div class="glass-card education-card">
         <h3>Academic History</h3>
-        
+
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
@@ -103,7 +141,7 @@
     </div>
   </section>
 
-  <!-- Skills & Technologies -->
+  <!-- 02. Skills & Technologies -->
   <section id="skills" class="section">
     <div class="section-header">
       <span class="tag">02. Capabilities</span>
@@ -158,7 +196,7 @@
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- 03. Featured Projects -->
   <section id="projects" class="section">
     <div class="section-header">
       <span class="tag">03. Portfolio</span>
@@ -174,7 +212,7 @@
         </div>
         <h3 class="project-title">Plant Disease Detection System</h3>
         <p class="project-summary">
-          An automated agricultural diagnostics system utilizing Convolutional Neural Networks (CNN) to detect foliar pathologies from leaf image datasets. Engineered to empower crop monitoring through high-confidence prediction and image preprocessing.
+          An automated agricultural diagnostics system utilizing Convolutional Neural Networks (CNNs) to detect foliar pathologies from leaf image datasets. Engineered to empower crop monitoring through high-confidence prediction and image preprocessing.
         </p>
         <div class="project-techs">
           <span>Python</span>
@@ -189,7 +227,7 @@
       <article class="glass-card project-card">
         <div class="project-top">
           <span class="project-pill minor-pill">Minor Project</span>
-          <a href="https://github.com/Neil-M-Lal/Pet-Paradise" target="_blank" class="project-icon-link">GitHub ↗</a>
+          <a href="https://github.com/Neil-M-Lal/Pet-Paradise" target="_blank" rel="noopener noreferrer" class="project-icon-link">GitHub ↗</a>
         </div>
         <h3 class="project-title">Pet Paradise</h3>
         <p class="project-summary">
@@ -206,32 +244,32 @@
     </div>
   </section>
 
-  <!-- Research & Publications Section -->
-<section id="research" class="section">
-  <div class="section-header">
-    <h2 class="section-title">Academic Research</h2>
-    <p class="section-subtitle">Investigating advanced security and intelligent edge networks</p>
-  </div>
-  
-  <div class="research-grid">
-    <div class="glass-card research-card">
-      <div class="research-badge">Ongoing Research / IEEE Focus</div>
-      <h3>Edge-Based IoT Botnet Detection Using Lightweight Deep Learning</h3>
-      <p class="research-desc">
-        Investigating optimized 1D-CNN and Autoencoder neural network architectures designed for real-time network intrusion detection and edge-device IoT security. Focused on reducing computational overhead while maintaining high anomaly classification accuracy.
-      </p>
-      <div class="tag-container">
-        <span class="tag">Deep Learning</span>
-        <span class="tag">Edge Computing</span>
-        <span class="tag">1D-CNN</span>
-        <span class="tag">IoT Security</span>
+  <!-- Academic Research Section -->
+  <section id="research" class="section">
+    <div class="section-header">
+      <span class="tag">04. Research</span>
+      <h2 class="section-title">Academic Research</h2>
+      <p class="section-subtitle">Investigating advanced security and intelligent edge networks</p>
+    </div>
+
+    <div class="research-grid">
+      <div class="glass-card research-card">
+        <div class="research-badge">Ongoing Research / IEEE Focus</div>
+        <h3>Edge-Based IoT Botnet Detection Using Lightweight Deep Learning</h3>
+        <p class="research-desc">
+          Investigating optimized 1D-CNN and Autoencoder neural network architectures designed for real-time network intrusion detection and edge-device IoT security. Focused on reducing computational overhead while maintaining high anomaly classification accuracy.
+        </p>
+        <div class="tag-container">
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Edge Computing</span>
+          <span class="tag">1D-CNN</span>
+          <span class="tag">IoT Security</span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-   <!-- Education Section -->
+  <!-- Education Timeline Section -->
   <section class="section">
     <div class="custom-heading-wrapper">
       <h2 class="custom-heading">Education</h2>
@@ -299,7 +337,7 @@
         <div class="timeline-box step-box">
           <span class="step-num">02</span>
           <h3>Web Development</h3>
-          <p>Developed keen interest and hands-on skills in responsive web design, interactive interfaces, and backend systems.</p>
+          <p>Developed a strong focus and hands-on skills in responsive web design, interactive interfaces, and backend systems.</p>
         </div>
       </div>
 
@@ -329,7 +367,7 @@
         <div class="timeline-box step-box">
           <span class="step-num">05</span>
           <h3>MCA at MACE</h3>
-          <p>Advanced into Master of Computer Applications at Mar Athanasius College of Engineering, focusing on scalable software architecture and intelligent systems.</p>
+          <p>Advanced into a Master of Computer Applications at Mar Athanasius College of Engineering, focusing on scalable software architecture and intelligent systems.</p>
         </div>
       </div>
 
@@ -373,23 +411,23 @@
 
       <div class="stack-item-card">
         <div class="icon-circle">⚙️</div>
-        <h3>AI & MACHINE LEARNING</h3>
+        <h3>AI &amp; MACHINE LEARNING</h3>
         <p>Applied computer vision, intelligent classifiers, and deep neural network pipelines.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- 05. Contact -->
   <section id="contact" class="section contact-section">
     <div class="glass-card contact-card">
-      <span class="tag">04. Connect</span>
+      <span class="tag">05. Connect</span>
       <h2>Let's build something remarkable.</h2>
       <p>
-        Open to developer roles, open source collaboration, and engineering conversations. Feel free to connect.
+        Open to developer roles, open-source collaboration, and engineering conversations. Feel free to connect.
       </p>
       <div class="contact-actions">
-        <a href="https://github.com/Neil-M-Lal" target="_blank" class="btn btn-primary">GitHub Profile</a>
-        <a href="https://linkedin.com" target="_blank" class="btn btn-secondary">LinkedIn</a>
+        <a href="https://github.com/Neil-M-Lal" target="_blank" rel="noopener noreferrer" class="btn btn-primary">GitHub Profile</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
       </div>
     </div>
   </section>
@@ -398,6 +436,10 @@
     <p>© Neil M Lal • MCA Scholar • Hosted on Vercel</p>
   </footer>
 
+  <!-- GSAP & Lenis for Smooth Scroll & Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
